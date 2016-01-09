@@ -262,7 +262,10 @@ TakeActionOnFreekiller(attacker)
 				{
 					if (g_bSBAvailable)
 					{
-						SBBanPlayer(0, attacker, gShadow_Freekill_BanLength, "SM_Hosties: Freekilling");
+						decl String:ban_message[128];
+						Format(ban_message, sizeof(ban_message), "%T", "Freekill Ban Reason", attacker);
+						BanClient(attacker, gShadow_Freekill_BanLength, BANFLAG_AUTO, "SM_Hosties: Freekilling", ban_message);
+						PrintToChatAll(CHAT_BANNER, "Freekill Ban", attacker);
 					}
 					else
 					{

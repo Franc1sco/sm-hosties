@@ -416,7 +416,7 @@ PrepareBan(client, target, time, const String:reason[])
 	{
 		if (g_bSBAvailable)
 		{
-			SBBanPlayer(client, target, time, "Banned");
+			BanClient(target, time, BANFLAG_AUTO, "Banned", "Banned", "sm_ban", client);
 		}
 		else
 		{
@@ -428,9 +428,7 @@ PrepareBan(client, target, time, const String:reason[])
 		if (g_bSBAvailable)
 		{
 			// avoid const-string tag mismatch
-			new String:banreason[255];
-			strcopy(banreason, sizeof(banreason), reason);
-			SBBanPlayer(client, target, time, banreason);
+			BanClient(target, time, BANFLAG_AUTO, reason, reason, "sm_ban", client);
 		}
 		else
 		{
